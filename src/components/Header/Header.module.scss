@@ -1,7 +1,30 @@
 header {
+  
   .logo {
     font-weight: 600;
     font-size: 26px;
+  }
+
+  .nav{
+    float: right;
+    list-style: none;
+    margin-top: 5px;
+
+    li {
+      display: inline;
+      margin-left: 25px;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 600;
+      transition: opacity 500ms ease;
+      
+      &:hover{
+        opacity: 0.5;
+      }
+
+    }
+
+
   }
 
   .presentation {
@@ -14,7 +37,24 @@ header {
     background-repeat: no-repeat;
     position: relative;
     border-radius: 15px;
+
+    &::after{
+      content: 'Лучше, чем за бугром...';
+      color: #fff;
+      position: absolute;
+      top: 230px;
+      left: 50px;
+      font-size: 40px;
+    }
+
+    &::before{
+      content: 'и Точка.';
+      color: #fff;
+      position: absolute;
+      top: 280px;
+      left: 280px;
+      font-size: 55px;
+    }
   }
 
-  
 }
