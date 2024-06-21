@@ -1,8 +1,40 @@
 header {
   
+  .icon {
+    font-size: 40px;
+    margin-right: 10px;
+  }
+  
   .logo {
     font-weight: 600;
     font-size: 26px;
+  }
+
+  .shopCartButton {
+    float: right;
+    cursor: pointer;
+    transition: color 500ms ease;
+    font-size: 27px;
+
+    &:hover, 
+    &.active {
+      color: #0058AB;
+    }
+  }
+
+  .shopCard {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    width: 450px;
+    min-height: 100px;
+    background: #0058AB;
+    z-index: 1000;
+    box-shadow: 10px 10px 14px 0px rgba(0,0,0,0.57);
+    -webkit-box-shadow: 10px 10px 14px 0px rgba(0,0,0,0.57);
+    -moz-box-shadow: 10px 10px 14px 0px rgba(0,0,0,0.57);
+
+
   }
 
   .nav{
