@@ -3,10 +3,32 @@ import styles from "./Header.module.scss"
 import { FcIdea } from "react-icons/fc";
 import { GrBasket } from "react-icons/gr";
 import { FaCarTunnel } from "react-icons/fa6";
+import Orders from "../Orders";
 
-export default function Header() {
+export default function Header(props) {
     let [cardOpen, setCardOpen]=useState(false);
     
+    const showOrders=(props)=> {
+        let summa=0;
+
+        props.orders.forEach(el=>summa+=Number.parseFloat(el.price))
+        return(
+            <>
+                {props.orders.map(el=>(
+                    <Orders key={el.id} item={el} onDelete={props.onDelete}/>
+                ))}
+                <p className={styles.summa}>Итого: {new Intl.NumberFormat().format(summa)} ₽</p>
+            </>
+        );
+    }
+
+    const showNothing=()=> {
+        return(
+            <div className={styles.empty}>
+                <h2>Товары отсутсвуют в корзине</h2>
+            </div>
+        );
+    }
 
     return(
         <header>
@@ -23,7 +45,7 @@ export default function Header() {
 
             {cardOpen && (
                 <div className={styles.shopCard}>
-
+                    {props.orders.length>0 ? showOrders(props) : showNothing()}
                 </div>
             )}
             <div className={styles.presentation}></div>

@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Item.module.scss";
 
+
 export default function Item(props) {
     return(
         <div className={styles.item}>
@@ -9,6 +10,7 @@ export default function Item(props) {
             <p>{props.item.desc}</p>
             <b>{props.item.price} ₽</b>
             <div className={styles.addToCard} onClick={()=>props.onAdd(props.item)}>+</div>
+
         </div>
     );
 }
