@@ -2,11 +2,19 @@ import React, { useState } from "react";
 import styles from "./Header.module.scss"
 import { FcIdea } from "react-icons/fc";
 import { GrBasket } from "react-icons/gr";
-import { FaCarTunnel } from "react-icons/fa6";
 import Orders from "../Orders";
+import PriceListPDF from "../PriceListPDF";
+import {saveAs} from "file-saver";
+import { pdf } from "@react-pdf/renderer";
+
 
 export default function Header(props) {
     let [cardOpen, setCardOpen]=useState(false);
+
+    const handleDownloadPDF = async () => {
+        const pdfBlob = await pdf(<PriceListPDF items={props.items}/>).toBlob();
+        saveAs(pdfBlob, "PriceList.pdf");        
+    }
     
     const showOrders=(props)=> {
         let summa=0;
@@ -38,7 +46,8 @@ export default function Header(props) {
                 <ul className={styles.nav}>
                     <li>О нас</li>
                     <li>Контакты</li>
-                    <li>Личный кабинет</li>
+                    <li onClick={handleDownloadPDF}>Скачать прайс-лист</li>
+
                 </ul>
                 <GrBasket onClick={()=>setCardOpen(cardOpen=!cardOpen)} className={`${styles.shopCartButton} ${cardOpen ? styles.active : ''}`}/>
             </div>
